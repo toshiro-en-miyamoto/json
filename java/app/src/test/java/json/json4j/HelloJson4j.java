@@ -298,26 +298,28 @@ public class HelloJson4j
     void json4j_baeldung_71()
     {
         {
-            JSONArray ja = CDL.rowToJSONArray(new JSONTokener(
-                "England, USA, Canada"
-            ));
+            final String source
+            = "England, USA, Canada";
 
             final String expected
-            = "[\"England\",\"USA\",\"Canada\"]"
-            ;
+            = "[\"England\",\"USA\",\"Canada\"]";
+
+            JSONArray ja
+            = CDL.rowToJSONArray(new JSONTokener(source));
+
             assertEquals(expected, ja.toString());
         }
         {
-            JSONArray ja = CDL.rowToJSONArray(new JSONTokener(
-                ""
-                + "The Deer Hunter"
-                + ", "
-                + "\"Good Morning, Vietnam\""
-                + ", "
-                + "The Bridges of Madison County"
-                + ", "
-                + "The Intern"
-            ));
+            final String source
+            = ""
+            + "The Deer Hunter"
+            + ", "
+            + "\"Good Morning, Vietnam\""
+            + ", "
+            + "The Bridges of Madison County"
+            + ", "
+            + "The Intern"
+            ;
 
             final String expected
             = ""
@@ -331,6 +333,10 @@ public class HelloJson4j
             + "\"The Intern\""
             + "]"
             ;
+
+            JSONArray ja
+            = CDL.rowToJSONArray(new JSONTokener(source));
+
             assertEquals(expected, ja.toString());
         }
     }
@@ -344,12 +350,13 @@ public class HelloJson4j
             = "[\"England\",\"USA\",\"Canada\"]"
             ;
 
-            JSONArray ja = new JSONArray(source);
-
             final String expected
             = "England,USA,Canada"
             + "\n"
             ;
+
+            JSONArray ja = new JSONArray(source);
+
             assertEquals(expected, CDL.rowToString(ja));
         }
         {
